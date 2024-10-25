@@ -69,12 +69,11 @@ public class Main {
                             System.out.printf("Voo de origem %s e com destino a %s existente -> ",origemDoVoo[i].toUpperCase(), destinoDoVoo[i]);
                             if (numeroDeLugares[i]>0){
                                 System.out.printf("Disponibilidade ok, quantidade de lugares restantes -> %d%n",numeroDeLugares[i]);
-                                verificarCadastroOrigem = 1;
                             }
                             else {
                                 System.out.println("Não há lugares restantes no voo");
-                                verificarCadastroOrigem = 1;
                             }
+                            verificarCadastroOrigem = 1;
                         }
                     }
                     if (numeroDeVoosCadastrado <= 0){
