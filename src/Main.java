@@ -11,7 +11,6 @@ public class Main {
         int escolha;
         int numeroDeVoosCadastrado = 0;
         int nmrVoo;
-        int validacao;
         do {
             System.out.printf("%nMenu%n1->Cadastrar voo%n2->Consultar voo por número%n3->Consultar voo por origem%n4->efetuar reserva%n5->Sair%n");
             escolha = sc.nextInt();
@@ -22,7 +21,7 @@ public class Main {
                         System.out.print("Digite o número do voo: ");
                         nmrVoo = sc.nextInt();
                         sc.nextLine();
-                        validacao = 0;
+                        int validacao = 0;
                         for (int i = 0; i <= numeroDeVoosCadastrado; i++) {
                             if (nmrVoo == numeroDoVoo[i]) {
                                 System.out.println("Número de voo já cadastrado");
