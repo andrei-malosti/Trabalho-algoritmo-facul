@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class Main {
+public class TrabAndrei {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int[] numeroDoVoo = new int[10];
@@ -45,59 +45,63 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.print("Digite o número do voo para realizar a pesquisa: ");
-                    int pesquisaPorNumero = sc.nextInt();
-                    sc.nextLine();
-                    int vooSemCadastro = 0;
-                    for (int i = 0; i <= numeroDeVoosCadastrado; i++) {
-                        if (numeroDoVoo[i] == pesquisaPorNumero) {
-                            System.out.printf("Voo com destino a %s existente -> ", destinoDoVoo[i].toUpperCase());
-                            if (numeroDeLugares[i] > 0) {
-                                System.out.printf("Disponibilidade ok, quantidade de lugares restantes -> %d%n", numeroDeLugares[i]);
-                            } else {
-                                System.out.println("Não há lugares restantes no voo.");
+                    if (numeroDeVoosCadastrado > 0) {
+                        System.out.print("Digite o número do voo para realizar a pesquisa: ");
+                        int pesquisaPorNumero = sc.nextInt();
+                        sc.nextLine();
+                        int vooSemCadastro = 0;
+                        for (int i = 0; i <= numeroDeVoosCadastrado; i++) {
+                            if (numeroDoVoo[i] == pesquisaPorNumero) {
+                                System.out.printf("Voo com destino a %s existente -> ", destinoDoVoo[i].toUpperCase());
+                                if (numeroDeLugares[i] > 0) {
+                                    System.out.printf("Disponibilidade ok, quantidade de lugares restantes -> %d%n", numeroDeLugares[i]);
+                                } else {
+                                    System.out.println("Não há lugares restantes no voo.");
+                                }
+                                vooSemCadastro = 1;
                             }
-                            vooSemCadastro = 1;
                         }
-                    }
-
-                    if (numeroDeVoosCadastrado <= 0) {
-                        System.out.println("Nenhum dado foi inserido ainda.");
-                    } else if (vooSemCadastro != 1) {
-                        System.out.println("Voo nao cadastrado");
+                        if (vooSemCadastro != 1) {
+                            System.out.println("Voo nao cadastrado");
+                        }
+                    } else {
+                        System.out.println("Nenhum dado foi inserido ainda!");
                     }
 
                     break;
 
                 case 3:
-                    System.out.print("Digite a origem: ");
-                    String origemParaPesquisar = sc.nextLine();
-                    int verificarCadastroOrigem = 0;
-                    for (int i = 0; i < numeroDeVoosCadastrado; i++) {
-                        if (origemDoVoo[i].equals(origemParaPesquisar)) {
-                            System.out.printf("Voo de origem %s e com destino a %s existente -> ", origemDoVoo[i].toUpperCase(), destinoDoVoo[i].toUpperCase());
-                            if (numeroDeLugares[i] > 0) {
-                                System.out.printf("Disponibilidade ok, quantidade de lugares restantes -> %d%n", numeroDeLugares[i]);
-                            } else {
-                                System.out.println("Não há lugares restantes no voo");
+                    if (numeroDeVoosCadastrado > 0) {
+                        System.out.print("Digite a origem: ");
+                        String origemParaPesquisar = sc.nextLine();
+                        int verificarCadastroOrigem = 0;
+                        for (int i = 0; i < numeroDeVoosCadastrado; i++) {
+                            if (origemDoVoo[i].equals(origemParaPesquisar)) {
+                                System.out.printf("Voo de origem %s e com destino a %s existente -> ", origemDoVoo[i].toUpperCase(), destinoDoVoo[i].toUpperCase());
+                                if (numeroDeLugares[i] > 0) {
+                                    System.out.printf("Disponibilidade ok, quantidade de lugares restantes -> %d%n", numeroDeLugares[i]);
+                                } else {
+                                    System.out.println("Não há lugares restantes no voo");
+                                }
+                                verificarCadastroOrigem = 1;
                             }
-                            verificarCadastroOrigem = 1;
+                        }
+                        if (verificarCadastroOrigem != 1) {
+                            System.out.println("Voo não cadastrado");
                         }
                     }
-                    if (numeroDeVoosCadastrado <= 0) {
-                        System.out.println("Nenhum dado foi inserido");
-                    } else if (verificarCadastroOrigem != 1) {
-                        System.out.println("Voo não cadastrado");
+                    else {
+                        System.out.println("Nenhum dado foi inserido ainda!");
                     }
 
                     break;
 
                 case 4:
-                    System.out.print("Qual o número do voo desejado?: ");
-                    int numeroReserva = sc.nextInt();
-                    sc.nextLine();
-                    int achou = 0;
                     if (numeroDeVoosCadastrado > 0) {
+                        System.out.print("Qual o número do voo desejado?: ");
+                        int numeroReserva = sc.nextInt();
+                        sc.nextLine();
+                        int achou = 0;
                         for (int i = 0; i <= numeroDeVoosCadastrado; i++) {
                             if (numeroReserva == numeroDoVoo[i]) {
                                 if (numeroDeLugares[i] <= 0) {
@@ -114,15 +118,15 @@ public class Main {
                                 achou = 1;
                             }
                         }
-                        if (achou != 1){
+                        if (achou != 1) {
                             System.out.println("Voo inexistente");
                         }
                     } else {
                         System.out.println("Nenhum valor inserido");
                     }
-
-
                     break;
+                default:
+                    System.out.println("digite uma opção valida");
             }
         } while (escolha != 5);
     }
